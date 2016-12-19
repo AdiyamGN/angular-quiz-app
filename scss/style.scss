@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Mirza:400,700|Proza+Libre:400,500,700');
+
+/*font-family: 'Mirza', cursive;
+font-family: 'Proza Libre', sans-serif;*/
+
+// --------------------- Variable Definition --------------------------- //
+
+$primary:     #8b8b9f;
+$highlight:   #73e298;
+$white:       #FFFFFF;
+$background:  #2b3133;
+$font_color:  #2b3133;
+$highlight_2: #27c9ff;
+$highlight_3: #ff6161;
+$highlight_4: #4f4dbb;
+
+// --------------------- General Styles ------------------------------- //
+
+* {
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Proza Libre', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	background: #F3F5F6;
+}
+
+a {
+	text-decoration: none;
+}
+
+.cf:before,
+.cf:after {
+	content: " ";
+	display: table;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.wrapper {
+	width: 1440px;
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+// --------------------- Header Styles ------------------------------- //
+
+.top-header {
+	padding: 0.5em 0;
+	background: $background;
+
+	.logo {
+		text-transform: uppercase;
+		float: left;
+		font-size: 1.15em;
+		font-family: 'Mirza', cursive;
+		font-weight: 700;
+		color: $white;
+		span {
+			color: #73e298;
+		}
+	}
+
+	.main-nav {
+		float: right;
+		font-size: 0.9em;
+		padding-top: 1.1em;
+
+		a {
+			padding-left: 2.5em;
+			text-decoration: none;
+			color: $primary;
+		}
+	}
+}
+
+// --------------------- Resources Styles ------------------------------- //
+
+.resources {
+	padding: 2em 0;
+	.resources-banner {
+		width: 1220px;
+		max-width: 90%;
+		margin: 0 auto;
+		text-align: center;
+		color: $font_color;
+
+		.topics {
+			width: 100%;
+			padding: 0;
+			list-style: none;
+			position: relative;
+
+			.topic {
+				position: relative;
+				background: $white;
+				width: 46%;
+				float: left;
+				margin-right: 2.5%;
+				margin-top: 3em;
+				padding: 2em;
+				text-align: center;
+				border: solid 1px #d3dee2;
+				border-radius: 6px;
+    		border-top: solid 5px #43d6a0;
+    		cursor: pointer;
+				transition: all 0.3s ease-in-out;
+    		&:hover {
+    			box-shadow: 0px 2px 40px 0 rgba(65,74,78,0.1);
+    		}
+
+    		.tag-line {
+    			color: $background;
+    			letter-spacing: 1px;
+    			text-transform: uppercase;
+    			font-size: 1.2rem;
+    		}
+
+    		.intro-text {
+    			color: #6f7f86;
+    			line-height: 1.5rem;
+    		}
+
+    		.btn-circle-1 {
+    			font-family: 'Proza Libre', sans-serif;
+    			text-transform: capitalize;
+    			border: 3px solid $primary;
+    			outline: none;
+    			border-radius: 100%;
+    			font-weight: 700;
+    			font-size: 0.85em;
+    			background: transparent;
+    			color: $highlight_2;
+    			margin-left: 3em;
+    			padding: 1.3em;
+    			position: absolute;
+    			width: 85px;
+    			left: 85%;
+    			top: 81%;
+    			margin: -40px 0 0 -40px;
+					transition: all 0.3s ease-in-out;
+    			&:hover {
+    				transform: scale(1.02);
+    			}
+    		}
+
+    		.btn {
+    			font-family: 'Proza Libre', sans-serif;
+    			text-transform: uppercase;
+    			border: none;
+    			outline: none;
+    			padding: 1.3em 4em;
+    			color: white;
+    			border-radius: 0.3em;
+    			letter-spacing: 1px;
+    			margin: 0.8em 0;
+    			font-weight: 700;
+    			font-size: 0.85em;
+					transition: all 0.3s ease-in-out;
+    			&:hover {
+    				transform: scale(1.03);
+    			}
+    		}
+			}
+
+			.topic-1 {
+    		border-top: solid 5px $highlight_2;
+    	}
+
+    	.topic-2 {
+    		border-top: solid 5px $highlight_3;
+    	}
+
+    	.topic-3 {
+    		border-top: solid 5px $highlight_4;
+    	}
+
+    	.topic-4 {
+    		border-top: solid 5px $highlight;
+    	}
+
+    	.btn-1 {
+    		background: $highlight_2;
+    	}
+
+    	.btn-2 {
+    		background: $highlight_3;
+    	}
+
+    	.btn-3 {
+    		background: $highlight_4;
+    	}
+
+    	.btn-4 {
+    		background: $highlight;
+    	}
+    	
+
+		}
+	}
+}

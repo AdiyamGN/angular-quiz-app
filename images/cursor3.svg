@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" class="nl-coursecard-icon">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #43d6a0;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path fill="#4f4dbb" d="M435.988,1107.83l-12.548,11.84L420,1116.05l8.719-8.22L420,1099.62l3.443-3.62Zm14,18.17H431.737v-5.29h18.254" transform="translate(-420 -1096)"></path>
+</svg>
