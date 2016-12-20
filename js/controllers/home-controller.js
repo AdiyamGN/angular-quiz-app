@@ -4,11 +4,23 @@
 
 	angular
 		.module('quizApp')
-		.controller('homeCtrl', homeCtrl)
+		.controller('homeCtrl', homeController)
+
+		homeController.$inject = ['quizMetrics','DataService'];
 
 
-		function homeCtrl() {
+		function homeController(quizMetrics, DataService) {
+
 			var vm = this;
+			vm.quizMetrics = quizMetrics;
+	
+			vm.activateQuiz = activateQuiz;
+
+			function activateQuiz() {
+				quizMetrics.changeState(true);
+			}
+			
+
 		}
 
 })();

@@ -14,7 +14,76 @@
 
 	<ng-include src="'/templates/header.html'"></ng-include>
 
-	<ui-view></ui-view>
+	<section class="resources" ng-controller="homeCtrl as home" ng-hide="home.quizMetrics.quizActive">
+		<div class="resources-banner">
+			<h2>Front-End Developer Resources</h2>
+
+			<div class="topics cf">
+				<div class="topic topic-1">
+					<img src="images/cursor1.svg">
+					<button class="btn-circle-1" style="color: #27c9ff" ng-click="home.activateQuiz()">Take Quiz</button>
+					<h4 class="tag-line">Referesh your HTML5 Skills.</h4>
+					<p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur luctus vestibulum. Duis in tellus consequat a vitae quam sit amet ultricies sem.</p>
+					<button class="btn btn-1">Start this path</button>
+				</div>
+
+				<div class="topic topic-2">
+					<img src="images/cursor2.svg">
+					<button class="btn-circle-1" style="color: #ff6161">Take Quiz</button>
+					<h4 class="tag-line">Referesh your CSS3 Skills.</h4>
+					<p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur luctus vestibulum. Duis in tellus consequat a vitae quam sit amet ultricies sem.</p>
+					<button class="btn btn-2">Start this path</button>
+				</div>
+
+				<div class="topic topic-3">
+					<img src="images/cursor3.svg">
+					<button class="btn-circle-1" style="color: #4f4dbb">Take Quiz</button>
+					<h4 class="tag-line">Referesh your jQuery Skills.</h4>
+					<p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur luctus vestibulum. Duis in tellus consequat a vitae quamsit amet ultricies sem.</p>
+					<button class="btn btn-3">Start this path</button>
+				</div>
+
+				<div class="topic topic-4">
+					<img src="images/cursor4.svg">
+					<button class="btn-circle-1" style="color: #73e298">Take Quiz</button>
+					<h4 class="tag-line">Referesh your Angular Skills.</h4>
+					<p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur luctus vestibulum. Duis in tellus consequat a vitae quam sit amet ultricies sem.</p>
+					<button class="btn btn-4">Start this path</button>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section class="quiz" ng-controller="htmlQuizCtrl as htmlQuiz" ng-show="htmlQuiz.quizMetrics.quizActive">
+		<div class="quiz-banner">
+
+			<h2>HTML5 Quiz</h2>
+
+			<div class="quiz-card">
+				<div class="top-section">
+					<span class="question">Lorem epsum is a sudo text for the devs.</span>
+				</div>
+
+				<div class="question-index">
+					<h2>1</h2>
+				</div>
+
+				<div class="bottom-section">
+					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
+					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
+					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
+					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
+
+					<div class="progress-bar">
+						<a href="#" class="progress" ng-repeat="question in htmlQuiz.dataService.htmlQuizQuestions"
+							ng-class="{'question-answered': question.selected !== null, 'question-unanswered': question.selected === null}">1</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
 
 	<!-- Third Part Js -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
@@ -23,8 +92,12 @@
 	<!-- Application Scripts -->
 	<script src="js/app.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
-	<script src="js/config.js"></script>
 	<script src="js/controllers/home-controller.js"></script>
+	<script src="js/controllers/html-quiz-controller.js"></script>
+	<script src="js/factories/quizmetrics.js"></script>
+	<script src="js/factories/dataservice.js"></script>
+
+
 
 </body>
 </html>

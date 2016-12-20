@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Mirza:400,700|Proza+Libre:400,500,700');
 
-/*font-family: 'Mirza', cursive;
-font-family: 'Proza Libre', sans-serif;*/
-
 // --------------------- Variable Definition --------------------------- //
 
 $primary:     #8b8b9f;
@@ -13,6 +10,7 @@ $font_color:  #2b3133;
 $highlight_2: #27c9ff;
 $highlight_3: #ff6161;
 $highlight_4: #4f4dbb;
+$quiz_card:   #acc0e9;
 
 // --------------------- General Styles ------------------------------- //
 
@@ -202,3 +200,80 @@ a {
 		}
 	}
 }
+
+// --------------------- Quiz Styles ------------------------------- //
+
+.quiz {
+    padding: 2em 0;
+    .quiz-banner {
+        width: 1220px;
+        max-width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        color: $font_color;
+
+        .quiz-card {
+            display: inline-block;
+            width: 650px;
+            background: $white;
+            height: 560px;
+            position: relative;
+            z-index: 5;
+            color: $font_color;
+            box-shadow: 3px 3px rgba(#E0E5F7, 0.5);
+
+            .top-section {
+                background: $quiz_card;
+                height: 200px;
+                border-radius: 5px 5px 0 0;
+                .question {
+                    display: block;
+                    padding-top: 90px
+                }
+            }
+            
+            .question-index {
+                position: absolute;
+                top: 158px;
+                left: 50%;
+                padding: 10px;
+                transform: translateX(-50%);
+                border-radius: 100%;
+                padding: 5px 30px;
+                background: $white;
+                color: $primary;
+                border: 2px solid $highlight_4;
+                box-shadow: 3px 6px rgba(#acc0e9, 0.5);
+            }
+
+            .bottom-section {
+                text-align: center;
+                padding: 40px 50px;
+
+                .choice {
+                    padding-top: 14px;
+                }
+
+                .progress-bar {
+                    margin-top: 50px;
+                    a {
+                        text-decoration: none;
+                        margin: 0 8px;
+                        color: $white;
+                        padding: 5px 12px;
+                        border-radius: 100%;
+                    }
+                    .question-unanswered {
+                        background: $highlight_3;
+                    }
+                    .question-answered {
+                        background: $highlight_2;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
