@@ -2,6 +2,6 @@
 
 	"use strict";
 
-	angular.module('quizApp', []);
+	angular.module('quizApp', ['ui.router']);
 
 })();
