@@ -17,7 +17,7 @@
 			vm.activateQuiz = activateQuiz;
 
 			function activateQuiz() {
-				quizMetrics.changeState(true);
+				quizMetrics.changeState('htmlQuiz', true);
 			}
 			
 

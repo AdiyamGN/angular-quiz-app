@@ -7,6 +7,8 @@
 	<title>UI United | Front End Development Resources</title>
 	<!-- Normalize CSS -webkit-font-smoothing: subpixel-antialiased;-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<!-- font-awesome -->
+	<script src="https://use.fontawesome.com/7da33bde7e.js"></script>
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
@@ -14,7 +16,7 @@
 
 	<ng-include src="'/templates/header.html'"></ng-include>
 
-	<section class="resources" ng-controller="homeCtrl as home" ng-hide="home.quizMetrics.quizActive">
+	<section class="resources" ng-controller="homeCtrl as home" ng-hide="home.quizMetrics.quizActive || home.quizMetrics.resultsActive">
 		<div class="resources-banner">
 			<h2>Front-End Developer Resources</h2>
 
@@ -61,24 +63,83 @@
 			<h2>HTML5 Quiz</h2>
 
 			<div class="quiz-card">
-				<div class="top-section">
-					<span class="question">Lorem epsum is a sudo text for the devs.</span>
+				<div class="top-section" ng-hide="htmlQuiz.finilise">
+					<span class="question">{{htmlQuiz.dataService.htmlQuizQuestions[htmlQuiz.activeQuestion].text}}</span>
 				</div>
 
-				<div class="question-index">
-					<h2>1</h2>
+				<div class="question-index" ng-hide="htmlQuiz.finilise">
+					<h2>{{htmlQuiz.activeQuestion+1}}</h2>
 				</div>
 
 				<div class="bottom-section">
-					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
-					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
-					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
-					<p class="choice">Lorem epsum is a sudo text for the devs.</p>
+					<p class="choice" ng-repeat="choice in htmlQuiz.dataService.htmlQuizQuestions[htmlQuiz.activeQuestion].possibilities"
+					ng-class="{'selected-answer': $index === htmlQuiz.dataService.htmlQuizQuestions[htmlQuiz.activeQuestion].selected}"
+					ng-click="htmlQuiz.selectAnswer($index)"
+					ng-hide="htmlQuiz.finilise">
+						{{choice.answer}}
+					</p>
 
-					<div class="progress-bar">
+					<button class="continue" ng-click="htmlQuiz.questionAnswered()" ng-hide="htmlQuiz.finilise">Continue</button>
+					
+					<div class="progress-bar" ng-hide="htmlQuiz.finilise">
 						<a href="#" class="progress" ng-repeat="question in htmlQuiz.dataService.htmlQuizQuestions"
-							ng-class="{'question-answered': question.selected !== null, 'question-unanswered': question.selected === null}">1</a>
+							ng-class="{'question-answered': question.selected !== null, 'question-unanswered': question.selected === null}"
+							ng-click="htmlQuiz.setActiveQuestion($index)">
+								{{$index+1}}
+						</a>
 					</div>
+
+					<div class="result" ng-show="htmlQuiz.finilise">
+						<h3>Are you sure you want to submit your answers?</h3>
+						<button class="btn-yes" ng-click="htmlQuiz.finaliseAnswers()">Yes</button>
+						<button class="btn-no" ng-click="htmlQuiz.finilise = false">No</button>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="result" ng-controller="resultCtrl as results" ng-show="results.quizMetrics.resultsActive">
+		<div class="result-banner">
+			<h1>Results</h1>
+
+			<div class="result-card">
+
+				<div class="top-section">
+					<span class="question">{{results.dataService.htmlQuizQuestions[results.activeQuestion].text}}</span>
+				</div>
+
+				<div class="question-index">
+					<h2>{{results.activeQuestion+1}}</h2>
+				</div>
+
+				<div class="bottom-section">
+
+					<p class="choice" ng-repeat="choice in results.dataService.htmlQuizQuestions[results.activeQuestion].possibilities"
+					ng-class="results.getAnswerClass($index)"
+					ng-click="results.selectAnswer($index)">
+						{{choice.answer}}
+						<span ng-show="$index !== results.quizMetrics.correctAnswers[results.activeQuestion] && $index === results.dataService.htmlQuizQuestions[results.activeQuestion].selected">Your Answer</span>
+						<span ng-show="$index === results.quizMetrics.correctAnswers[results.activeQuestion]">Correct Answer</span>
+					</p>
+					
+					<div class="progress-bar">
+						<a href="#" class="progress" ng-repeat="question in results.dataService.htmlQuizQuestions"
+							ng-class="{'question-answered': question.correct, 'question-unanswered': !question.correct}"
+							ng-click="results.setActiveQuestion($index)">
+								<i class="fa" ng-class="{'fa-check': question.correct, 'fa-times': !question.correct}"></i>
+						</a>
+					</div>
+
+					<div class="score">
+						<h4>You answered {{results.quizMetrics.numCorrect}} out of  {{results.dataService.htmlQuizQuestions.length}} correct</h4>
+						<h4>{{results.calculatePercentage() | number:2}}%</h4>
+					</div>
+
+					<button class="reset" ng-click="results.reset()">Back to Resources</button>
+
 				</div>
 			</div>
 
@@ -94,6 +155,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
 	<script src="js/controllers/home-controller.js"></script>
 	<script src="js/controllers/html-quiz-controller.js"></script>
+	<script src="js/controllers/result-controller.js"></script>
 	<script src="js/factories/quizmetrics.js"></script>
 	<script src="js/factories/dataservice.js"></script>
 

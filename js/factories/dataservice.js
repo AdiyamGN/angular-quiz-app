@@ -11,12 +11,15 @@
 		function DataService() {
 			var dataObj = {
 
-				htmlQuizQuestions: htmlQuizQuestions
+				htmlQuizQuestions: htmlQuizQuestions,
+				correctAnswers: correctAnswers
 
 			};
 
 			return dataObj;
 		}
+
+		var correctAnswers = [1, 3, 1, 1];
 
 		var htmlQuizQuestions = [
 				{
@@ -41,19 +44,19 @@
 				},
 				{
 					type: "text",
-					text: "How much can a loggerhead weigh?",
+					text: "Which of the following is a new HTML5 tag?",
 					possibilities: [
 						{
-							answer: "Up to 200lb"
+							answer: "div"
 						},
 						{
-							answer: "Up to 300lb"
+							answer: "head"
 						},
 						{
-							answer: "Up to 400lb"
+							answer: "table"
 						},
 						{
-							answer: "Up to 500lb"
+							answer: "section"
 						}
 					],
 					selected: null,
